@@ -9,10 +9,10 @@ import java.util.List;
 
 public class MenuRecommender {
     public void runMenu() {
-        processNameAndCantEatMenu();
+        List<Coach> coaches = initializeCoaches();
     }
 
-    private List<Coach> processNameAndCantEatMenu() {
+    private List<Coach> initializeCoaches() {
         OutputView.printMenuRecommendStart();
         String[] coachNames = processRequestCoachName();
         List<Coach> coaches = new ArrayList<>();
@@ -20,18 +20,6 @@ public class MenuRecommender {
             coaches.add(processRequestCantEatMenu(coachName));
         }
         return coaches;
-    }
-
-    private Coach processRequestCantEatMenu(String coachName) {
-        while (true){
-            try {
-                OutputView.printRequestCantEatMenu(coachName);
-                String[] cantEatMenus = InputView.requestCantEatMenu();
-                return new Coach(coachName, cantEatMenus);
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
     }
 
     private String[] processRequestCoachName() {
@@ -44,4 +32,21 @@ public class MenuRecommender {
             }
         }
     }
+
+    private Coach processRequestCantEatMenu(String coachName) {
+        while (true){
+            try {
+                OutputView.printRequestCantEatMenu(coachName);
+                String[] cantEatMenus = InputView.requestCantEatMenu();
+                return createCoach(coachName, cantEatMenus);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private static Coach createCoach(String coachName, String[] cantEatMenus) {
+        return new Coach(coachName, cantEatMenus);
+    }
+
 }
