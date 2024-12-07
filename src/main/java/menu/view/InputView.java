@@ -3,6 +3,8 @@ package menu.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
+    private static final String DELIMITER = ",";
+
     public static String[] requestCoachName() {
         String input = Console.readLine();
         return splitInput(input.trim());
@@ -14,6 +16,6 @@ public class InputView {
     }
 
     private static String[] splitInput(String input) {
-        return input.split(",");
+        return input.split(DELIMITER);
     }
 }
