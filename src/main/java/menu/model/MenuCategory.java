@@ -27,4 +27,10 @@ public enum MenuCategory {
                 .map(category -> category.categoryName)
                 .collect(Collectors.toList());
     }
+
+    public static List<String> getAllMenuItems() {
+        return Stream.of(MenuCategory.values())
+                .flatMap(category -> category.menuItems.stream())
+                .collect(Collectors.toList());
+    }
 }

@@ -1,18 +1,28 @@
 package menu.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import menu.validator.CantEatMenuValidator;
+import menu.validator.CoachNameValidator;
 
 public class InputView {
     private static final String DELIMITER = ",";
 
     public static String[] requestCoachName() {
         String input = Console.readLine();
-        return splitInput(input.trim());
+        String[] coachNames = splitInput(input.trim());
+
+        CoachNameValidator.validateName(coachNames);
+
+        return coachNames;
     }
 
     public static String[] requestCantEatMenu() {
         String input = Console.readLine();
-        return splitInput(input.trim());
+        String[] cantEatMenus =  splitInput(input.trim());
+
+        CantEatMenuValidator.validateCantEatMenu(cantEatMenus);
+
+        return cantEatMenus;
     }
 
     private static String[] splitInput(String input) {
