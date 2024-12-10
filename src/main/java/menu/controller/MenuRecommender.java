@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuRecommender {
+    private final List<String> dailyCategory;
+
+    public MenuRecommender() {
+        this.dailyCategory = new DailyCategoryGenerator().generateDailyCategory();
+    }
+
     public void runMenu() {
         List<Coach> coaches = initializeCoaches();
         printResult();
@@ -54,9 +60,7 @@ public class MenuRecommender {
     private void printResult() {
         OutputView.printResultMessage();
         OutputView.printSeparationPartByDay();
-        OutputView.printDailyCategory(new DailyCategoryGenerator().generateDailyCategory());
+        OutputView.printDailyCategory(dailyCategory);
 
     }
-
-
 }
