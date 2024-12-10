@@ -11,6 +11,7 @@ public class OutputView {
 
     public static void printMenuRecommendStart() {
         System.out.println(START_RECOMMEND_LUNCH);
+        System.out.println();
     }
 
     public static void printRequestCoachName() {
@@ -18,10 +19,12 @@ public class OutputView {
     }
 
     public static void printRequestCantEatMenu(String name) {
-        System.out.printf("%s" + REQUEST_CANT_EAT_MENU, name);
+        System.out.println();
+        System.out.printf("%s" + REQUEST_CANT_EAT_MENU + "\n", name);
     }
 
     public static void printResultMessage() {
+        System.out.println();
         System.out.println(PRINT_RESULT_MESSAGE);
     }
 

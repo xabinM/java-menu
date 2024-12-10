@@ -3,8 +3,6 @@ package menu.validator;
 import menu.exception.Exception;
 import menu.model.MenuCategory;
 
-import java.util.List;
-
 public class CantEatMenuValidator {
     public static void validateCantEatMenu(String[] cantEatMenus) {
         validateCantEatMenuCount(cantEatMenus);
@@ -21,7 +19,7 @@ public class CantEatMenuValidator {
 
     private static void validateRightCantEatMenu(String[] cantEatMenus) {
         for (String cantEatMenu : cantEatMenus) {
-            if (!MenuCategory.getAllMenuItems().contains(cantEatMenu)) {
+            if (!MenuCategory.getAllMenuItems().contains(cantEatMenu) && !cantEatMenu.isEmpty()) {
                 throw new IllegalArgumentException(
                         Exception.INVALID_RIGHT_CANT_EAT_MENU_NAME.getMessage()
                 );
