@@ -1,6 +1,8 @@
 package menu.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum MenuCategory {
     JAPANESE("일식", List.of("규동", "우동", "미소시루", "스시", "가츠동", "오니기리", "하이라이스", "라멘", "오코노미야끼")),
@@ -15,5 +17,14 @@ public enum MenuCategory {
     MenuCategory(String categoryName, List<String> menuItems) {
         this.categoryName = categoryName;
         this.menuItems = menuItems;
+    }
+
+    // static이 쓰인 이유
+    // 보통 enum 클래스는 MenuCategory.JAPANESE.~() 방식으로 사용해왔지만
+    // 이 메서드같은경우는 특정 인스턴스와 관련없이 모든 인스턴스의 이름을 뽑아오기 때문에 static 사용
+    public static List<String> getCategoryNames() {
+        return Stream.of(MenuCategory.values())
+                .map(category -> category.categoryName)
+                .collect(Collectors.toList());
     }
 }

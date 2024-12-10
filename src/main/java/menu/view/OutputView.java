@@ -1,5 +1,7 @@
 package menu.view;
 
+import java.util.List;
+
 public class OutputView {
     private static final String START_RECOMMEND_LUNCH = "점심 메뉴 추천을 시작합니다.";
     private static final String REQUEST_COACHES_NAME = "코치의 이름을 입력해 주세요. (, 로 구분)";
@@ -25,5 +27,14 @@ public class OutputView {
 
     public static void printSeparationPartByDay() {
         System.out.println(PRINT_SEPARATE_BY_DAY_MESSAGE);
+    }
+
+    public static void printDailyCategory(List<String> dailyCategory) {
+        System.out.printf("[ 카테고리 | %s | %s | %s | %s | %s ]",
+                dailyCategory.get(0),
+                dailyCategory.get(1),
+                dailyCategory.get(2),
+                dailyCategory.get(3),
+                dailyCategory.get(4));
     }
 }
