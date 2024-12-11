@@ -33,4 +33,12 @@ public enum MenuCategory {
                 .flatMap(category -> category.menuItems.stream())
                 .collect(Collectors.toList());
     }
+
+    public static List<String> findMenuItemsByCategoryName(String name) {
+        return Stream.of(values())
+                .filter(category -> category.categoryName.equals(name))
+                .findFirst()
+                .map(category -> category.menuItems)
+                .get();
+    }
 }
