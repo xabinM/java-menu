@@ -18,7 +18,7 @@ public class DailyCategoryGenerator {
         do {
             result = new ArrayList<>();
             for (int i = 0; i < 5; i++) {
-                result.add(categoryNames.get(Randoms.pickNumberInRange(0, 4)));
+                result.add(categoryNames.get(Randoms.pickNumberInRange(1, 5) - 1));
             }
         } while (checkDuplicationCategoryName(result));
 
