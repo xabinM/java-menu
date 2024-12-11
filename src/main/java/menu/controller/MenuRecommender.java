@@ -2,6 +2,7 @@ package menu.controller;
 
 import menu.generator.DailyCategoryGenerator;
 import menu.model.Coach;
+import menu.service.MenuPicker;
 import menu.view.InputView;
 import menu.view.OutputView;
 
@@ -17,7 +18,7 @@ public class MenuRecommender {
 
     public void runMenu() {
         List<Coach> coaches = initializeCoaches();
-        printResult();
+        printResult(coaches);
     }
 
     private List<Coach> initializeCoaches() {
@@ -57,10 +58,14 @@ public class MenuRecommender {
         return new Coach(coachName, cantEatMenus);
     }
 
-    private void printResult() {
+    private void printResult(List<Coach> coaches) {
         OutputView.printResultMessage();
         OutputView.printSeparationPartByDay();
         OutputView.printDailyCategory(dailyCategory);
-
+        for (Coach coach : coaches) {
+            List<String> resultMenu = new MenuPicker().createMenuEachCategory(coach, dailyCategory);
+            OutputView.printRecommendationResult(coach.combineNameWithMenu(resultMenu));
+        }
+        OutputView.printRecommendationCompleteMessage();
     }
 }
