@@ -2,8 +2,6 @@ package menu.validator;
 
 import menu.exception.Exception;
 
-import java.util.List;
-
 public class CoachNameValidator {
     public static void validateName(String[] coachNames) {
         validateNameLength(coachNames);

@@ -33,11 +33,20 @@ public class OutputView {
     }
 
     public static void printDailyCategory(List<String> dailyCategory) {
-        System.out.printf("[ 카테고리 | %s | %s | %s | %s | %s ]",
+        System.out.printf("[ 카테고리 | %s | %s | %s | %s | %s ]\n",
                 dailyCategory.get(0),
                 dailyCategory.get(1),
                 dailyCategory.get(2),
                 dailyCategory.get(3),
                 dailyCategory.get(4));
+    }
+
+    public static void printRecommendationResult(List<String> result) {
+        System.out.println("[ " + String.join(" | " ,result) + " ]");
+    }
+
+    public static void printRecommendationCompleteMessage() {
+        System.out.println();
+        System.out.println("추천을 완료했습니다.");
     }
 }
